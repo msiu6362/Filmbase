@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  origin_name: MyString
+  slogan: MyText
+  country: 
+  genre: 
+  director: 
+  length: 1
+  year: 1
+  description: MyText
+  trailer_url: MyString
+
+two:
+  name: MyString
+  origin_name: MyString
+  slogan: MyText
+  country: 
+  genre: 
+  director: 
+  length: 1
+  year: 1
+  description: MyText
+  trailer_url: MyString

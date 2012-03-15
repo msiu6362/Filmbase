@@ -1,0 +1,7 @@
+.film
+  .cover
+    =link_to show_cover(film),film
+  .info
+    .name=link_to film.name,film
+    %small.gray=film.origin_name
+  .clear

@@ -1,0 +1,9 @@
+.page-header
+  %h1 Фильмы
+-if admin?
+  %p=link_to_icon "icon-plus icon-white","Новый фильм",new_film_path,class: "btn btn-primary"
+
+-@films.each do |film|
+  =render 'film', film: film
+
+=paginate @films

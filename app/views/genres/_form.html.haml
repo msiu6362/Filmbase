@@ -1,0 +1,10 @@
+=form_for(@genre, html: { class: 'form-horizontal'}) do |f|
+  =error_messages_for(@genre)
+  .control-group
+    =f.label :name,nil,class: 'control-label'
+    .controls
+      =f.text_field :name
+  .form-actions
+    =f.submit nil,:class=>'btn btn-primary'
+    или
+    = link_to "назад", countries_path

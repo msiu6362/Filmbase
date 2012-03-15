@@ -1,0 +1,43 @@
+=form_for(@film, html: { class: 'form-horizontal', multipart: true}) do |f|
+  =error_messages_for @film
+  .control-group
+    =f.label :name,nil,class: 'control-label'
+    .controls=f.text_field :name, class: 'span6'
+  .control-group
+    =f.label :origin_name,nil,class: 'control-label'
+    .controls=f.text_field :origin_name, class: 'span6'
+  .control-group
+    =f.label :slogan,nil,class: 'control-label'
+    .controls=f.text_area :slogan,:rows=>3, class: 'span6'
+  .control-group
+    =f.label :country_id,nil,class: 'control-label'
+    .controls=f.select :country_id, Country.all.map{|c| [c.name,c.id]}
+  .control-group
+    =f.label :genre_id,nil,class: 'control-label'
+    .controls=f.select :genre_id, Genre.all.map{|g| [g.name,g.id]}
+  .control-group
+    =f.label :director_id,nil,class: 'control-label'
+    .controls=f.select :director_id, Person.order('name').all.map{|g| [g.name,g.id]}
+  .control-group
+    =f.label :length,nil,class: 'control-label'
+    .controls
+      =f.number_field :length, class: 'span1'
+      %p.help-block (в минутах)
+  .control-group
+    =f.label :year,nil,class: 'control-label'
+    .controls=f.number_field :year, class: 'span1'
+  .control-group
+    =f.label :description,nil,class: 'control-label'
+    .controls=f.text_area :description, class: 'span6', rows: 6
+  .control-group
+    =f.label :cover,nil,class: 'control-label'
+    .controls=f.file_field :cover
+  .control-group
+    =f.label :trailer_url,nil,class: 'control-label'
+    .controls
+      =f.text_field :trailer_url
+      %p.help-block Код видео на YouTube
+  .form-actions
+    =f.submit nil,:class=>'btn btn-primary'
+    или
+    = link_to "назад", films_path

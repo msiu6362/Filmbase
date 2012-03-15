@@ -1,0 +1,16 @@
+=form_for(@user, html: { class: 'form-horizontal'}) do |f|
+  =error_messages_for @user
+  .control-group
+    =f.label :name,nil,class: 'control-label'
+    .controls=f.text_field :name
+  .control-group
+    =f.label :email,nil,class: 'control-label'
+    .controls=f.email_field :email
+  .control-group
+    =f.label :password,nil,class: 'control-label'
+    .controls=f.password_field :password
+  .control-group
+    =f.label :password_confirmation,nil,class: 'control-label'
+    .controls=f.password_field :password_confirmation
+  .form-actions
+    =f.submit "Зарегистрироваться",:class=>'btn btn-primary'

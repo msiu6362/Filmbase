@@ -1,0 +1,14 @@
+@import "twitter/bootstrap";
+
+// import responsive layout
+@import "twitter/bootstrap/responsive";
+
+// Your custom stylesheets goes here (override Less here)
+.alert-danger,
+.alert-error,
+.alert-danger .alert-heading,
+.alert-error .alert-heading {
+    h1, h2, h3, h4, h5, h6 {
+        color: @errorText;
+    }
+}

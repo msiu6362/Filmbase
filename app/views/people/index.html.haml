@@ -1,0 +1,10 @@
+.page-header
+  %h1 Персоны
+-if admin?
+  %p=link_to_icon "icon-plus icon-white", "Добавить персону",new_person_path, class: 'btn btn-primary'
+- @people.each do |person|
+  =render 'person', person:person
+/          = link_to_icon "icon-pencil icon-white","Редактировать", edit_country_path(country),class: 'btn btn-small btn-primary'
+/          = link_to_icon "icon-trash icon-white","Удалить", country_path(country), method: :delete, confirm: t("views.confirm"),class: 'btn btn-small btn-danger'
+
+=paginate @people

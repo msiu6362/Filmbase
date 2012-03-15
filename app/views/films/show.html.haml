@@ -1,0 +1,35 @@
+.row
+  .span3.center
+    =show_cover(@film,:medium)
+    -if admin?
+      %p
+        = link_to_icon "icon-pencil icon-white","Редактировать", edit_film_path(@film),class: 'btn btn-primary'
+        = link_to_icon "icon-trash icon-white","Удалить", @film, method: :delete, confirm: t("views.confirm"),class: 'btn btn-danger'
+
+
+  .span6
+    %p
+      %h1=@film.name
+      -unless @film.origin_name.blank?
+        %h3=@film.origin_name
+    %p=show_film_info(@film)
+    -unless @film.slogan.blank?
+      %blockquote
+        %p=@film.slogan
+    %dl
+      -if d=@film.director
+        %dt=Film.human_attribute_name(:director_id)
+        %dd=link_to d.name,d
+      -unless @film.length.blank?
+        %dt=Film.human_attribute_name(:length)
+        %dd="#{@film.length} мин"
+    -unless @film.description.blank?
+      .well
+        %p=@film.description
+    -unless @film.trailer_url.blank?
+      =show_video(@film.trailer_url)
+    -if @film.people.any?
+      %p
+        %h6 В главных ролях
+        -@film.people.each do |person|
+          =render 'people/person', person: person

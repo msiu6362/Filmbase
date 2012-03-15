@@ -1,0 +1,6 @@
+-if object.errors.any?
+  .alert.alert-error
+    %h3 При сохранении произошли ошибки
+    %ul
+      -object.errors.full_messages.each do |msg|
+        %li=msg

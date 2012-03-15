@@ -1,0 +1,27 @@
+=form_for(@person, html: { class: 'form-horizontal', multipart: true}) do |f|
+  =error_messages_for @person
+  .control-group
+    =f.label :name,nil,class: 'control-label'
+    .controls=f.text_field :name
+  .control-group
+    =f.label :origin_name,nil,class: 'control-label'
+    .controls=f.text_field :origin_name
+  .control-group
+    =f.label :male,nil,class: 'control-label'
+    .controls
+      %label.radio
+        =f.radio_button :male,1, checked: @person.male?
+        Мужской
+      %label.radio
+        =f.radio_button :male,0, checked: !@person.male?
+        Женский
+  .control-group
+    =f.label :birthday,nil,class: 'control-label'
+    .controls=f.date_select :birthday, {start_year: 1850, end_year: Time.now.year, include_blank: true}, class: "auto_width"
+  .control-group
+    =f.label :avatar,nil,class: 'control-label'
+    .controls=f.file_field :avatar
+  .form-actions
+    =f.submit nil,:class=>'btn btn-primary'
+    или
+    = link_to "назад", people_path

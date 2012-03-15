@@ -1,0 +1,16 @@
+.page-header
+  %h1 Страны
+%table.table.table-striped
+  %thead
+    %tr
+      %th=Country.human_attribute_name(:name)
+      %th
+  %tbody
+    - @countries.each do |country|
+      %tr
+        %td= link_to country.name, country
+        %td
+          = link_to_icon "icon-pencil icon-white","Редактировать", edit_country_path(country),class: 'btn btn-small btn-primary'
+          = link_to_icon "icon-trash icon-white","Удалить", country, method: :delete, confirm: t("views.confirm"),class: 'btn btn-small btn-danger'
+
+=link_to_icon "icon-plus icon-white", "Добавить страну",new_country_path, class: 'btn btn-primary'

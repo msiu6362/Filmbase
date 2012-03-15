@@ -1,0 +1,16 @@
+.page-header
+  %h1 Жанры
+%table.table.table-striped
+  %thead
+    %tr
+      %th=Genre.human_attribute_name(:name)
+      %th
+  %tbody
+    - @genres.each do |genre|
+      %tr
+        %td= link_to genre.name, genre
+        %td
+          = link_to_icon "icon-pencil icon-white","Редактировать", edit_genre_path(genre),class: 'btn btn-small btn-primary'
+          = link_to_icon "icon-trash icon-white","Удалить", genre_path(genre), method: :delete, confirm: t("views.confirm"),class: 'btn btn-small btn-danger'
+
+=link_to_icon "icon-plus icon-white", "Добавить жанр",new_genre_path, class: 'btn btn-primary'
