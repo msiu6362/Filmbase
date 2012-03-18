@@ -5,3 +5,6 @@
     .name=link_to film.name,film
     %small.gray=film.origin_name
   .clear
+  -if admin?
+    =link_to_icon "icon-pencil icon-white", "Редактировать",edit_film_path(film),:class=>'btn btn-primary btn-small'
+    =link_to_icon  "icon-trash icon-white","Удалить",film, :method=>:delete,:confirm=>t('views.confirm'),:class=>'btn btn-danger btn-small'

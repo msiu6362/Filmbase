@@ -7,8 +7,8 @@ module ApplicationHelper
     start==year ? start : "#{start}&ndash;#{year}".html_safe
   end
 
-  def link_to_icon(icon,text,*args)
-    link_to(content_tag(:i,nil,:class=>icon)+text,*args)
+  def link_to_icon(icon, text, *args)
+    link_to(content_tag(:i, nil, :class => icon)+text, *args)
   end
 
   def error_messages_for(object)
@@ -17,5 +17,10 @@ module ApplicationHelper
 
   def admin?
     logged_in? && current_user.admin?
+  end
+
+  def menu_items
+    [{name: "films", title: "Фильмы"}, {name: "people", title: 'Персоны'}, {name: 'genres', title: "Жанры", admin: true},
+     {name: 'countries', title: "Страны", admin: true}]
   end
 end

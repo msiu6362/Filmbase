@@ -13,5 +13,11 @@
     %p=show_person_sex(@person)
     -unless @person.birthday.blank?
       %p=show_person_age(@person)
-    -@person.films.each do |film|
-      =render 'films/film', film: film
+    -unless @person.produced_films.blank?
+      %h4 Режиссер
+      -@person.produced_films.each do |film|
+        =render 'films/film', film: film
+    -unless @person.films.blank?
+      %h4=@person.female? ? "Актриса" : "Актер"
+      -@person.films.each do |film|
+        =render 'films/film', film: film

@@ -286,6 +286,8 @@ ru:
         country_id: "Страна"
         genre_id: "Жанр"
         director_id: "Режиссер"
+        director_token: "Режиссер"
+        person_tokens: "В главных ролях"
         length: "Продолжительность"
         year: "Год создания"
         cover: "Постер"

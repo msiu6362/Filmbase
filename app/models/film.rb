@@ -8,7 +8,7 @@ class Film < ActiveRecord::Base
 
   has_attached_file :cover, styles: {medium:'220x', thumb: '60x'}
 
-  validates_attachment_content_type :cover, content_type: /^image\/(gif|png|x\-png|jpeg|jpg|jpeg)$/
+  validates_attachment_content_type :cover, content_type: /^image\/(gif|png|x\-png|jpeg|jpg )$/
 
   validates :name, presence: true
   validates :country_id, presence: true
@@ -20,8 +20,11 @@ class Film < ActiveRecord::Base
 
   attr_reader :person_tokens
 
+  scope :full_load, includes(:genre,:country,:director,:people)
+
   def person_tokens=(ids)
     self.person_ids=ids.split(',')
   end
+
 
 end

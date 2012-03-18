@@ -1,7 +1,5 @@
-%p
-  %b Name:
-  = @genre.name
-
-= link_to 'Edit', edit_genre_path(@genre)
-\|
-= link_to 'Back', genres_path
+.page-header
+  %h1=@genre.name
+-@films.each do |film|
+  =render 'films/film', film: film
+=paginate @films

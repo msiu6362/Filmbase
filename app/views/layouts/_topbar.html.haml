@@ -1,0 +1,12 @@
+%ul.nav
+  -menu_items.each do |item|
+    -if item[:admin].blank? || admin?
+      %li{class: controller_name==item[:name] ? 'active' : nil}=link_to item[:title],url_for(:controller=>item[:name])
+%ul.nav.pull-right
+  -if logged_in?
+    %li
+      .name=current_user.name
+    %li.divider-vertical
+    %li=link_to "Выход",logout_path
+  -else
+    %li=link_to "Вход", new_session_path

@@ -1,7 +1,5 @@
-%label{:class => "label"}= t("activerecord.attributes.country.name", :default => t("activerecord.labels.name", :default => "Name")) + ":"
-%p= @country.name
-
-.form-actions
-  = link_to "Back", countries_path, :class => 'btn'
-  = link_to "Edit", edit_country_path(@country), :class => 'btn'
-  = link_to "Delete", country_path(@country), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn'
+.page-header
+  %h1=@country.name
+-@films.each do |film|
+  =render 'films/film', film: film
+=paginate @films

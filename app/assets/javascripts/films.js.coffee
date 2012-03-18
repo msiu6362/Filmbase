@@ -1,3 +1,4 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+tokenInputOptions = {crossDomain: false, hintText: "Введите имя", noResultText: "Ничего не найдено", searchingText: "Поиск", preventDuplicates: true}
+$ ->
+  $("input#film_person_tokens").tokenInput(window.people_path,$.extend({},tokenInputOptions,{prePopulate: $(this).attr('data-pre')}))
+  $("input#film_director_id").tokenInput(window.people_path,$.extend({},tokenInputOptions,{tokenLimit: 1,prePopulate: $(this).attr('data-pre')}))

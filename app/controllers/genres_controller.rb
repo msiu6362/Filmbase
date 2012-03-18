@@ -1,20 +1,14 @@
 # -*- encoding : utf-8 -*-
 class GenresController < ApplicationController
-  before_filter :check_auth,:admin_permission
+  before_filter :check_auth,:admin_permission,:except=>'show'
 
   def index
     @genres = Genre.all
   end
 
-  # GET /genres/1
-  # GET /genres/1.json
   def show
     @genre = Genre.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @genre }
-    end
+    @films=@genre.films.page(params[:page])
   end
 
   def new

@@ -1,20 +1,14 @@
 # -*- encoding : utf-8 -*-
 class CountriesController < ApplicationController
-  before_filter :check_auth, :admin_permission
+  before_filter :check_auth, :admin_permission,:except=>'show'
 
   def index
-    @countries = Country.all
+    @countries = Country.page(params[:page])
   end
 
-  # GET /countries/1
-  # GET /countries/1.json
   def show
     @country = Country.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @country }
-    end
+    @films=@country.films.page(params[:page])
   end
 
   def new

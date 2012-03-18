@@ -3,3 +3,6 @@
   .info
     .name=link_to person.name,person
   .clear
+  -if admin?
+    =link_to_icon 'icon-pencil icon-white',"Редактировать",edit_person_path(person),:class=>"btn btn-primary btn-small"
+    =link_to_icon 'icon-trash icon-white',"Удалить",person, :method=>:delete,:confirm=>t('views.confirm'),:class=>"btn btn-danger btn-small"
