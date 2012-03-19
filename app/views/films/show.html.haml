@@ -9,7 +9,9 @@
 
   .span6
     %p
-      %h1=@film.name
+      %h1
+        =@film.name
+        =film_labels(@film)
       -unless @film.origin_name.blank?
         %h3=@film.origin_name
     %p=show_film_info(@film)

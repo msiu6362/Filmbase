@@ -2,7 +2,9 @@
   .cover
     =link_to show_cover(film),film
   .info
-    .name=link_to film.name,film
+    .name
+      =link_to film.name,film
+      =film_labels(film)
     %small.gray=film.origin_name
   .clear
   -if admin?

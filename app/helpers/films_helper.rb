@@ -17,4 +17,11 @@ module FilmsHelper
   def show_video(uri)
     content_tag(:iframe,nil, width: 570, height:390, src: "http://youtube.com/embed/#{uri}", allow_fullscreen: true)
   end
+
+  def film_labels(film)
+    res=[]
+    res << content_tag(:span,"Новое",class: 'label label-important') if film.newest?
+    res << content_tag(:span,"#{film.year}!",class: 'label label-info') if film.this_year?
+    res.join.html_safe
+  end
 end

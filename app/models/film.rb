@@ -3,7 +3,7 @@ class Film < ActiveRecord::Base
   belongs_to :country
   belongs_to :genre
   belongs_to :director, :class_name => 'Person'
-  has_and_belongs_to_many :people,:order=>'people.name'
+  has_and_belongs_to_many :people, :order => 'people.name'
 
 
   has_attached_file :cover, styles: {medium:'220x', thumb: '60x'}
@@ -20,10 +20,18 @@ class Film < ActiveRecord::Base
 
   attr_reader :person_tokens
 
-  scope :full_load, includes(:genre,:country,:director,:people)
+  scope :full_load, includes(:genre, :country, :director, :people)
 
   def person_tokens=(ids)
     self.person_ids=ids.split(',')
+  end
+
+  def newest?
+    created_at > 1.year.ago
+  end
+
+  def this_year?
+    Time.now.year==year
   end
 
 
